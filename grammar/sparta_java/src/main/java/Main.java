@@ -1,13 +1,29 @@
-import java.util.Arrays;
+interface Bird {
+    void fly(int x, int y, int z);
+}
+
+class Pigeon implements Bird{
+    private int x,y,z;
+
+    @Override
+    public void fly(int x, int y, int z) {
+        printLocation();
+        System.out.println("날아갑니다.");
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        printLocation();
+    }
+    public void printLocation() {
+        System.out.println("현재 위치 (" + x + ", " + y + ", " + z + ")");
+    }
+}
 
 public class Main {
-    public static void main(String[] args){
-        int i = 0;
-        int sum = 0;
-        while (i < 10){
-            sum += i;
-            i++;
-        }
-        System.out.println(sum);
+
+    public static void main(String[] args) {
+        Bird bird = new Pigeon();
+        bird.fly(1, 2, 3);
+//        bird.printLocation(); // compile error
     }
 }
